@@ -1,29 +1,32 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f7fb;
+    background-color: #eff2f6;
 }
 
-/*  Header background */
+/* ================= HEADER ================= */
 .header {
-    background: linear-gradient(135deg, #6486c6, #94acd6);
-    color: white;
-    padding: 40px;
+    background: linear-gradient(135deg, #e5ebf7, #ccd7ec);
+    color: rgb(24, 40, 60);
+    padding: 30px;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Title */
 .header h1 {
     margin: 0;
-    font-size: 32px;
+    font-size: 45px;
     letter-spacing: 1px;
 }
 
-/* Subtitle */
+/* ================= SPEECH BUBBLE ================= */
 .speech-bubble {
-    display: inline-block;
+    display: block;
+    width: fit-content;
+
     margin-top: 15px;
+    margin-left: 250px;
+
     padding: 12px 18px;
     background: white;
     color: #1e3c72;
@@ -37,7 +40,6 @@ body {
     box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
-/*  */
 .speech-bubble::after {
     content: "";
     position: absolute;
@@ -48,8 +50,94 @@ body {
     border-color: white transparent transparent transparent;
 }
 
-/* Chart container */
+/* ================= PAGE CONTAINER ================= */
+.page-container {
+    max-width: 1350px;
+    margin: auto;
+}
+
+/* ================= SECTION ================= */
+.section-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.section-number {
+    font-size: 70px;
+    font-weight: bold;
+    color: rgba(30,60,114,0.15);
+    display: block;
+}
+
+.section-title h2 {
+    margin-top: -10px;
+    font-size: 32px;
+    color: #1e3c72;
+}
+
+.section-title p {
+    margin-top: -20px;
+    max-width: 720px;
+    font-size: 22px;
+    line-height: 1.5;
+    color: #171616;
+}
+
+/* ================= VERA CONTROLS ================= */
+.vega-bindings {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.vega-bind label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e3c72;
+    margin-right: 10px;
+}
+
+.vega-bind select {
+    font-size: 16px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid #b7c4d9;
+    background-color: white;
+    margin-right: 25px;
+}
+
+.vega-bind input[type="checkbox"] {
+    transform: scale(1.4);
+    margin-left: 10px;
+    margin-right: 8px;
+}
+
+/* ================= CHART + TEXT LAYOUT ================= */
+.chart-section {
+    display: flex;
+    gap: 10px;  
+    align-items: flex-start;
+}
+
+/* chart */
 #chart1 {
-    margin: 30px auto;
-    width: 90%;
+    flex: 2;
+    margin: 0;
+    max-width: 800px; 
+}
+
+/* right text */
+.insight-text {
+    flex: 1;
+
+    font-size: 21px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.insight-text p {
+    max-width: 38ch;
+    text-align: justify;
 }

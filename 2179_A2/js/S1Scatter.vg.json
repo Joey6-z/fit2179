@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "description": "Interactive scatter plot with dropdown and brush zoom",
+  "description": "Interactive scatter plot with dropdown, brush zoom and regression line toggle",
 
   "data": {
     "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/eye_score.csv"
@@ -11,21 +11,36 @@
     {
       "name": "HabitSelector",
       "value": "screen_time_hours",
+
       "bind": {
         "input": "select",
+
         "options": [
           "screen_time_hours",
           "screen_brightness_avg",
           "screen_distance_cm",
           "night_mode_usage"
         ],
+
         "labels": [
           "Screen Time Hours",
           "Screen Brightness Average",
           "Screen Distance (cm)",
           "Night Mode Usage (%)"
         ],
+
         "name": "Screen Habit: "
+      }
+    },
+
+    {
+      "name": "ShowRegression",
+
+      "value": true,
+
+      "bind": {
+        "input": "checkbox",
+        "name": " Show Regression Line "
       }
     }
   ],
@@ -38,68 +53,106 @@
   ],
 
   "vconcat": [
+
     {
-      "width": 700,
-      "height": 500,
+      "width": 550,
+      "height": 320,
 
-      "mark": {
-        "type": "point",
-        "filled": true,
-        "size": 80,
-        "opacity": 0.7
-      },
+      "layer": [
 
-      "encoding": {
-        "x": {
-          "field": "SelectedHabit",
-          "type": "quantitative",
-          "title":  "Selected Screen Habit"
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 80,
+            "opacity": 0.7
+          },
+
+          "encoding": {
+
+            "x": {
+              "field": "SelectedHabit",
+              "type": "quantitative",
+              "title": "Selected Screen Habit"
+            },
+
+            "y": {
+              "field": "eye_health_score",
+              "type": "quantitative",
+
+              "title": "Eye Health Score",
+
+              "scale": {
+                "domain": {
+                  "param": "brush"
+                }
+              }
+            },
+
+            "color": {
+              "field": "eye_health_score",
+              "type": "quantitative",
+              "title": "Eye Health Score"
+            },
+
+            "tooltip": [
+              {
+                "field": "SelectedHabit",
+                "type": "quantitative",
+                "title": "Habit Value"
+              },
+
+              {
+                "field": "eye_health_score",
+                "type": "quantitative",
+                "title": "Eye Health Score"
+              }
+            ]
+          }
         },
 
-        "y": {
-          "field": "eye_health_score",
-          "type": "quantitative",
-          "title": "Eye Health Score",
-          "scale": {
-            "domain": {
-              "param": "brush"
+        {
+          "transform": [
+            {
+              "regression": "eye_health_score",
+              "on": "SelectedHabit"
+            }
+          ],
+
+          "mark": {
+            "type": "line",
+            "strokeWidth": 3,
+            "color": "#1e3c72"
+          },
+
+          "encoding": {
+
+            "x": {
+              "field": "SelectedHabit",
+              "type": "quantitative"
+            },
+
+            "y": {
+              "field": "eye_health_score",
+              "type": "quantitative"
+            },
+
+            "opacity": {
+              "condition": {
+                "param": "ShowRegression",
+                "value": 1
+              },
+
+              "value": 0
             }
           }
-        },
-
-        "color": {
-          "field": "eye_health_score",
-          "type": "quantitative"
-        },
-
-        "tooltip": [
-          {
-            "field": "eye_health_score",
-            "type": "quantitative"
-          },
-          {
-            "field": "screen_time_hours",
-            "type": "quantitative"
-          },
-          {
-            "field": "screen_brightness_avg",
-            "type": "quantitative"
-          },
-          {
-            "field": "screen_distance_cm",
-            "type": "quantitative"
-          },
-          {
-            "field": "night_mode_usage",
-            "type": "quantitative"
-          }
-        ]
-      }
+        }
+      ]
     },
 
     {
-      "width": 700,
-      "height": 100,
+      "width": 550,
+      "height": 80,
 
       "mark": {
         "type": "point",
@@ -111,6 +164,7 @@
       "params": [
         {
           "name": "brush",
+
           "select": {
             "type": "interval",
             "encodings": ["y"]
@@ -119,16 +173,31 @@
       ],
 
       "encoding": {
+
         "x": {
           "field": "SelectedHabit",
-          "type": "quantitative"
+          "type": "quantitative",
+          "title": null
         },
 
         "y": {
           "field": "eye_health_score",
-          "type": "quantitative"
+          "type": "quantitative",
+          "title": null
         }
       }
     }
-  ]
+  ],
+
+  "config": {
+
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    }
+  }
 }
