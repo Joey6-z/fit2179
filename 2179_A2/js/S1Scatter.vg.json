@@ -4,7 +4,7 @@
   "description": "Interactive scatter plot with dropdown and brush zoom",
 
   "data": {
-    "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/2179_A2/data/eye_score.csv"
+    "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/eye_score.csv"
   },
 
   "params": [
