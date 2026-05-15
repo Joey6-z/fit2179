@@ -1,0 +1,88 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "description": "Heatmap showing how exercise and outdoor exposure relate to eye health",
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/eye_score.csv"
+  },
+
+  "width": 515,
+  "height": 400,
+
+  "mark": "rect",
+
+  "encoding": {
+
+    "x": {
+      "field": "exercise_hours",
+      "type": "quantitative",
+
+      "bin": {
+        "maxbins": 12
+      },
+
+      "title": "Weekly Exercise Hours"
+    },
+
+    "y": {
+      "field": "outdoor_light_exposure_hours",
+      "type": "quantitative",
+
+      "bin": {
+        "maxbins": 10
+      },
+
+      "title": "Daily Outdoor Light Exposure (Hours)"
+    },
+
+    "color": {
+      "aggregate": "mean",
+      "field": "eye_health_score",
+      "type": "quantitative",
+
+      "title": "Average Eye Health Score",
+
+      "scale": {
+        "scheme": "lightgreyteal",
+        "reverse": false
+      }
+    },
+
+    "tooltip": [
+
+      {
+        "field": "exercise_hours",
+        "type": "quantitative",
+        "bin": true,
+        "title": "Exercise Hours Range"
+      },
+
+      {
+        "field": "outdoor_light_exposure_hours",
+        "type": "quantitative",
+        "bin": true,
+        "title": "Outdoor Exposure Range"
+      },
+
+      {
+        "aggregate": "mean",
+        "field": "eye_health_score",
+        "type": "quantitative",
+        "title": "Average Eye Health Score"
+      }
+    ]
+  },
+
+  "config": {
+
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    }
+  }
+}
