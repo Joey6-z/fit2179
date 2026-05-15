@@ -15,39 +15,21 @@ body {
 
 .header h1 {
     margin: 0;
-    font-size: 45px;
+    font-size: 65px;
     letter-spacing: 1px;
+    font-family: "Akaya Telivigala", system-ui;
+    text-align: center;
 }
 
-/* ================= SPEECH BUBBLE ================= */
-.speech-bubble {
-    display: block;
-    width: fit-content;
-
+.header-p {
     margin-top: 15px;
-    margin-left: 250px;
 
-    padding: 12px 18px;
-    background: white;
+    text-align: center;
+
+    font-size: 22px;
+    line-height: 1.5;
+
     color: #1e3c72;
-    border-radius: 16px;
-    max-width: 500px;
-
-    position: relative;
-    font-size: 14px;
-    line-height: 1.4;
-
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-}
-
-.speech-bubble::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 30px;
-    border-width: 10px;
-    border-style: solid;
-    border-color: white transparent transparent transparent;
 }
 
 /* ================= PAGE CONTAINER ================= */
@@ -70,15 +52,16 @@ body {
 }
 
 .section-title h2 {
-    margin-top: -10px;
-    font-size: 32px;
+    margin-top: -15px;
+    font-size: 35px;
     color: #1e3c72;
 }
 
 .section-title p {
     margin-top: -20px;
-    max-width: 720px;
-    font-size: 22px;
+    font-family: "Kalam", cursive;
+    font-weight: 380;
+    font-size: 25px;
     line-height: 1.5;
     color: #171616;
 }
@@ -132,12 +115,13 @@ body {
 .insight-text {
     flex: 1;
 
-    font-size: 21px;
+    font-size: 22px;
     line-height: 1.6;
     color: #333;
+    margin-top: -25px;
 }
 
 .insight-text p {
-    max-width: 38ch;
+    max-width: 42ch;
     text-align: justify;
 }
