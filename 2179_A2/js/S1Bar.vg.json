@@ -1,147 +1,142 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Grouped bar chart of children's activity duration",
-  "data": {
-    "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/S1_children_byhour.csv"
-  },
-  "width": 280,
-  "height": 306,
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Grouped bar chart of children's activity duration",
+    "data": {
+        "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/S1_children_byhour.csv"
+    },
+    "width": 300,
+    "height": 306,
+    "transform": [
+        {
+            "fold": [
+                "< 2 hours",
+                "3-4 hours",
+                "5-9 hours",
+                "10-19 hours",
+                "> 20 hours"
+            ],
+            "as": [
+                "HourRange",
+                "Percentage"
+            ]
+        },
+        {
+            "calculate": "indexof(['< 2 hours','3-4 hours','5-9 hours','10-19 hours','> 20 hours'], datum.HourRange)",
+            "as": "HourOrder"
+        }
+    ],
+    "layer": [
+        {
+            "mark": {
+                "type": "bar",
+                "cornerRadiusEnd": 3
+            },
+            "encoding": {
+                "y": {
+                    "field": "Activity",
+                    "type": "nominal",
+                    "title": null,
+                    "scale": {
+                        "paddingInner": 0.3,
+                        "paddingOuter": 0.2
+                    }
+                },
+                "x": {
+                    "field": "Percentage",
+                    "type": "quantitative",
+                    "title": "Percentage of Children (%)",
+                    "axis": {
+                        "grid": false
+                    }
+                },
+                "color": {
+                    "field": "HourRange",
+                    "type": "nominal",
+                    "sort": [
+                        "< 2 hours",
+                        "3-4 hours",
+                        "5-9 hours",
+                        "10-19 hours",
+                        "> 20 hours"
+                    ],
+                    "scale": {
+                        "domain": [
+                            "< 2 hours",
+                            "3-4 hours",
+                            "5-9 hours",
+                            "10-19 hours",
+                            "> 20 hours"
+                        ],
+                        "range": [
+                            "#d9d9d9",
+                            "#fad2e1",
+                            "#d4c1ec",
+                            "#a9def9",
+                            "#6c91bf"
+                        ]
+                    }
+                },
+                "yOffset": {
+                    "field": "HourRange"
+                },
+                "order": {
+                    "field": "HourOrder",
+                    "type": "quantitative"
+                },
+                "tooltip": [
+                    {
+                        "field": "Activity",
+                        "type": "nominal"
+                    },
+                    {
+                        "field": "HourRange",
+                        "type": "nominal"
+                    },
+                    {
+                        "field": "Percentage",
+                        "type": "quantitative"
+                    }
+                ]
+            }
+        },
+        {
   "transform": [
     {
-      "fold": [
-        "2 hours or less (%)",
-        "3-4 hours (%)",
-        "5-9 hours (%)",
-        "10-19 hours (%)",
-        "20 hours or more (%)"
-      ],
-      "as": ["HourRange", "Percentage"]
+      "filter": "datum.Activity === 'Screen based activities'"
     }
   ],
-
-  "layer": [
-
-    {
-      "mark": {
-        "type": "rect",
-        "fill": "#f8e1e1",
-        "opacity": 0.15,
-        "cornerRadius": 2
-      },
-      "encoding": {
-        "y": {
-          "field": "Activity",
-          "type": "nominal"
-        },
-        "x": { "value": 0 },
-        "x2": { "signal": "width" }
-      },
-      "transform": [
-        {
-          "filter": "datum.Activity === 'Screen based activities'"
-        }
-      ]
-    },
-
-    {
-      "mark": {
-        "type": "bar",
-        "cornerRadiusEnd": 3
-      },
-      "encoding": {
-
-        "y": {
-          "field": "Activity",
-          "type": "nominal",
-          "title": null,
-          "scale": {
-            "paddingInner": 0.3,
-            "paddingOuter": 0.2
-          }
-        },
-
-        "x": {
-          "field": "Percentage",
-          "type": "quantitative",
-          "title": "Percentage of Children (%)",
-          "axis": { "grid": false }
-        },
-
-        "color": {
-          "field": "HourRange",
-          "type": "nominal",
-          "sort": [
-            "2 hours or less (%)",
-            "3-4 hours (%)",
-            "5-9 hours (%)",
-            "10-19 hours (%)",
-            "20 hours or more (%)"
-          ],
-          "scale": {
-            "range": [
-              "#fde2e4",
-              "#fad2e1",
-              "#d4c1ec",
-              "#a9def9",
-              "#6c91bf"
-            ]
-          }
-        },
-
-
-        "xOffset": {
-          "field": "HourRange"
-        },
-
-        "detail": {
-          "field": "HourRange"
-        },
-
-        "tooltip": [
-          { "field": "Activity", "type": "nominal" },
-          { "field": "HourRange", "type": "nominal" },
-          { "field": "Percentage", "type": "quantitative" }
-        ]
-      }
-    },
-
-    {
-      "transform": [
-        {
-          "filter": "datum.Activity === 'Screen based activities'"
-        }
-      ],
-      "mark": {
-        "type": "text",
-        "fontSize": 15,
-        "font": "Kalam",
-        "color": "#b75656",
-        "align": "left",
-        "baseline": "middle",
-        "dx": -60
-      },
-      "encoding": {
-        "y": {
-          "field": "Activity",
-          "type": "nominal"
-        },
-        "text": {
-          "value": "Highest screen exposure → eye strain risk"
-        }
-      }
-    }
-
-  ],
-
-  "config": {
-    "view": { "stroke": null },
-    "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 14
-    },
-    "legend": {
-      "labelFontSize": 11,
-      "titleFontSize": 12
-    }
+  "mark": {
+    "type": "text",
+    "fontSize": 15,
+    "font": "Kalam",
+    "color": "#b75656",
+    "align": "left",
+    "baseline": "middle",
+    "dx": 160,
+    "dy": -20
+  },
+  "encoding": {
+  "y": {
+    "field": "Activity",
+    "type": "nominal"
+  },
+  "text": {
+    "value": ["Highest screen", "exposure eye", "strain risk"]
   }
+}
+}
+    ],
+    "config": {
+        "view": {
+            "stroke": null
+        },
+        "axis": {
+            "labelFontSize": 12,
+            "titleFontSize": 14
+        },
+        "legend": {
+            "labelFontSize": 11,
+            "titleFontSize": 12
+        }
+    }
 }
