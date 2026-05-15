@@ -4,8 +4,8 @@
   "data": {
     "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/S1_children_byhour.csv"
   },
-  "width": 300,
-  "height": 300,
+  "width": 280,
+  "height": 306,
   "transform": [
     {
       "fold": [
