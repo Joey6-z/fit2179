@@ -124,3 +124,69 @@ body {
     max-width: 43ch;
     text-align: justify;
 }
+
+/* ================= intro ================= */
+
+.intro-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+
+.intro-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+
+    transition: 0.3s ease;
+}
+
+.intro-card:hover {
+    transform: translateY(-4px);
+}
+
+.intro-card img {
+    width: 140px;
+    height: 120px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    flex-shrink: 0;
+}
+
+.intro-content h3 {
+    margin: 0;
+
+    font-family: "Kalam", cursive;
+
+    font-size: 22px;
+
+    color: #5b4b6b;
+}
+
+.intro-content p {
+    margin-top: 6px;
+
+    line-height: 1.6;
+
+    color: #555;
+
+    font-size: 18px;
+}
