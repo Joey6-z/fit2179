@@ -3,10 +3,10 @@
   "width": 1100,
   "height": 670,
   "projection": {
-  "type": "equalEarth",
-  "scale": {"expr": "zoom * 240"},
-  "translate": {"expr": "[tx, ty]"}
-},
+    "type": "equalEarth",
+    "scale": { "expr": "zoom * 240" },
+    "translate": { "expr": "[tx, ty]" }
+  },
   "params": [
     {
       "name": "severity",
@@ -45,7 +45,7 @@
     },
     {
       "name": "ty",
-      "value":380,
+      "value": 380,
       "on": [
         {
           "events": "mousedown, [mousedown, window:mouseup] > window:mousemove",
@@ -63,9 +63,7 @@
           "feature": "ne_110m_admin_0_countries"
         }
       },
-      "transform": [
-        {"filter": "datum.properties.NAME != 'Antarctica'"}
-      ],
+      "transform": [{ "filter": "datum.properties.NAME != 'Antarctica'" }],
       "mark": {
         "type": "geoshape",
         "fill": "#e6e6e6",
@@ -102,12 +100,8 @@
           "as": "value"
         },
         {
-          "window": [
-            {"op": "rank", "as": "rank"}
-          ],
-          "sort": [
-            {"field": "value", "order": "descending"}
-          ]
+          "window": [{ "op": "rank", "as": "rank" }],
+          "sort": [{ "field": "value", "order": "descending" }]
         },
         {
           "filter": "datum.rank == 1"
@@ -149,7 +143,7 @@
           "feature": "ne_110m_admin_0_countries"
         }
       },
-      "mark": {"type": "geoshape"},
+      "mark": { "type": "geoshape" },
       "transform": [
         {
           "lookup": "properties.NAME",
@@ -176,7 +170,7 @@
           "field": "value",
           "title": "Prevalence(per 1000)",
           "type": "quantitative",
-          "scale": {"scheme": "blues"},
+          "scale": { "scheme": "blues" },
           "legend": {
             "orient": "top-left",
             "offset": 10,
@@ -184,9 +178,90 @@
           }
         },
         "tooltip": [
-          {"field": "properties.NAME", "title": "Country"},
-          {"field": "value", "title": "Prevalence(per 1000)"}
+          { "field": "properties.NAME", "title": "Country" },
+          { "field": "value", "title": "Prevalence(per 1000)" }
         ]
+      }
+    },
+    {
+      "data": { "values": [{}] },
+      "transform": [{ "filter": "severity == 'Blindness'" }],
+      "mark": {
+        "type": "text",
+        "fontSize": 16,
+        "color": "#873535",
+        "fontWeight": "bold",
+        "align": "center"
+      },
+      "encoding": {
+        "x": { "value": 460 },
+        "y": { "value": 380 },
+        "text": {
+          "value": ["Blindness is the most", "severe global vision", "loss burden in", "low-income regions."
+  ]}
+      }
+    },
+
+    {
+      "data": { "values": [{}] },
+      "transform": [
+        { "filter": "severity == 'Moderate and severe vision impairment'" }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 16,
+        "color": "#873535",
+        "fontWeight": "bold",
+        "align": "center"
+      },
+      "encoding": {
+        "x": { "value": 760 },
+        "y": { "value": 380 },
+        "text": {
+          "value": ["India has the highest","rate (64.4 per 1000)", "of moderate and", "severe vision impairment."
+  ]}
+      }
+    },
+
+    {
+      "data": { "values": [{}] },
+      "transform": [{ "filter": "severity == 'Mild vision impairment'" }],
+      "mark": {
+        "type": "text",
+        "fontSize": 16,
+        "color": "#873535",
+        "fontWeight": "bold",
+        "align": "center"
+      },
+      "encoding": {
+        "x": { "value": 760 },
+        "y": { "value": 380 },
+        "text": {
+          "value": ["Indonesia shows the", "highest mild vision", "impairment concentration."
+  ]}
+      }
+    },
+
+    {
+      "data": { "values": [{}] },
+      "transform": [
+        {
+          "filter": "severity == 'Vision impairment from uncorrected presbyopia'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 16,
+        "color": "#873535",
+        "fontWeight": "bold",
+        "align": "center"
+      },
+      "encoding": {
+        "x": { "value": 550 },
+        "y": { "value": 580 },
+        "text": {
+          "value": ["South Africa has the highest prevalence", "of uncorrected presbyopia vision impairment."
+  ]}
       }
     }
   ]
