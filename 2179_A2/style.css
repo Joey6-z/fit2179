@@ -323,7 +323,7 @@ html {
 }
 
 .insight-text2 p {
-    margin: 0;
+    margin-bottom: 10;
 
     text-align: justify;
 }
@@ -363,14 +363,11 @@ html {
 
 .vega-bindings {
     display: flex;
-
     align-items: center;
-
+    justify-content: center;
     gap: 25px;
-
     flex-wrap: wrap;
-
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .vega-bind label {
