@@ -80,6 +80,75 @@
           "feature": "ne_110m_admin_0_countries"
         }
       },
+
+      "transform": [
+        {
+          "lookup": "properties.NAME",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/S2_world_losing-1.csv"
+            },
+            "key": "country",
+            "fields": [
+              "Blindness",
+              "Moderate and severe vision impairment",
+              "Mild vision impairment",
+              "Vision impairment from uncorrected presbyopia"
+            ]
+          }
+        },
+        {
+          "calculate": "toNumber(datum[severity])",
+          "as": "value"
+        },
+        {
+          "window": [
+            {"op": "rank", "as": "rank"}
+          ],
+          "sort": [
+            {"field": "value", "order": "descending"}
+          ]
+        },
+        {
+          "filter": "datum.rank == 1"
+        }
+      ],
+
+      "layer": [
+        {
+          "mark": {
+            "type": "geoshape",
+            "stroke": "red",
+            "strokeWidth": 2,
+            "fillOpacity": 0
+          }
+        },
+
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 13,
+            "fontWeight": "bold",
+            "color": "red",
+            "dx": 10,
+            "dy": -10
+          },
+          "encoding": {
+            "text": {
+              "expr": "'Highest burden: ' + datum.country + ' (' + datum.value + ')'"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_110m_admin_0_countries"
+        }
+      },
       "mark": {"type": "geoshape"},
       "transform": [
         {
