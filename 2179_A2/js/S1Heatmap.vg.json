@@ -4,7 +4,7 @@
     "data": {
         "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/eye_score.csv"
     },
-    "width": 515,
+    "width": 556,
     "height": 300,
     "layer": [
         {
@@ -30,7 +30,7 @@
                     "aggregate": "mean",
                     "field": "eye_health_score",
                     "type": "quantitative",
-                    "title": "Average Eye Health Score",
+                    "title": ["Average Eye", "Health Score"],
                     "scale": {
                         "scheme": "lightgreyteal",
                         "reverse": false
@@ -57,45 +57,6 @@
                     }
                 ]
             }
-        },
-        {
-            "mark": {
-                "type": "text",
-                "align": "left",
-                "baseline": "top",
-                "font": "Kalam" ,
-                "fontWeight": "normal",
-                "fontSize": 19,
-                "color": "#ab4057"
-            },
-            "data": {
-                "values": [
-                    {
-                        "lines": [
-                            "Higher outdoor exposure and exercise",
-                            "improve eye health outcomes"
-                        ]
-                    }
-                ]
-            },
-            "encoding": {
-                "x": {
-                    "value": 100
-                },
-                "y": {
-                    "value": 60
-                },
-                "text": {
-                    "field": "lines",
-                    "type": "nominal"
-                }
-            },
-            "transform": [
-                {
-                    "calculate": "join(datum.lines, '\\n')",
-                    "as": "label"
-                }
-            ]
         }
     ],
     "config": {

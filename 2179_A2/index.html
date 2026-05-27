@@ -2,54 +2,78 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Vega -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
     <script src="main.js"></script>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- FONT -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Kalam:wght@300;400;700&display=swap"
         rel="stylesheet">
 
-    <title>Eye Health Dashboard</title>
-</head>
+    <title>Global Eye Health</title>
 
+</head>
 
 <body>
 
-    <!-- PAGE CONTAINER -->
-    <div class="page-container">
+    <!-- ================= HERO ================= -->
 
-        <!-- Dashboard Title -->
-        <div class="header">
+    <section class="hero">
 
-            <h1>Global Eye Health in the Digital Age</h1>
+        <div class="hero-overlay"></div>
 
-            <div class="header-p">
-                Healthy vision starts with awareness.
-                Protect your eyes, protect your future.
+        <div class="hero-content">
+
+            <p class="hero-tag">
+                Global Eye Health Report
+            </p>
+
+            <h1>
+                Global Eye Health in the Digital Age
+            </h1>
+
+            <p class="hero-subtitle">
+                How modern lifestyles, healthcare inequality,
+                and emerging risks are reshaping vision health worldwide.
+            </p>
+
+            <div class="scroll-indicator">
+                Scroll to explore ↓
             </div>
 
         </div>
 
-        <!-- INTRO GRID -->
+    </section>
+
+    <!-- ================= PAGE CONTAINER ================= -->
+
+    <div class="page-container">
+
+        <!-- ================= INTRO ================= -->
+
         <div class="intro-grid">
 
             <div class="intro-card">
 
-                <img src="images/vision.jpg" alt="Vision Problems">
+                <img src="images/vision.jpg">
 
                 <div class="intro-content">
                     <h3>Vision Problems</h3>
+
                     <p>
                         Millions of people worldwide experience vision impairment and myopia.
                     </p>
@@ -59,10 +83,11 @@
 
             <div class="intro-card">
 
-                <img src="images/glaucoma.jpg" alt="Eye Diseases">
+                <img src="images/glaucoma.jpg">
 
                 <div class="intro-content">
                     <h3>Eye Diseases</h3>
+
                     <p>
                         Conditions such as glaucoma and cataracts remain major causes of blindness.
                     </p>
@@ -72,10 +97,11 @@
 
             <div class="intro-card">
 
-                <img src="images/digital.jpg" alt="Digital Lifestyle">
+                <img src="images/digital.jpg">
 
                 <div class="intro-content">
                     <h3>Digital Lifestyle</h3>
+
                     <p>
                         Increased screen exposure is changing how people use their eyes every day.
                     </p>
@@ -85,10 +111,11 @@
 
             <div class="intro-card">
 
-                <img src="images/prevention.jpg" alt="Prevention and Care">
+                <img src="images/prevention.jpg">
 
                 <div class="intro-content">
                     <h3>Prevention & Care</h3>
+
                     <p>
                         Healthy habits and regular eye care may help protect long term vision.
                     </p>
@@ -98,87 +125,102 @@
 
         </div>
 
-        <!-- SECTION 1 -->
-        <div class="section-title">
+        <!-- ================= SECTION 1 ================= -->
 
-            <span class="section-number">01</span>
+        <section class="section-container">
 
-            <h2>Life in the Digital Age</h2>
+            <div class="section-title">
 
-            <p>
-                Understanding how modern screen habits are influencing long-term eye health.
-            </p>
+                <span class="section-number">01</span>
 
-        </div>
+                <h2>Life in the Digital Age</h2>
 
-        <!-- CHART GRID -->
-        <div class="chart-grid">
-
-            <!-- TOP LEFT -->
-            <div id="chart1"></div>
-
-            <!-- TOP RIGHT -->
-            <div class="insight-text">
                 <p>
+                    Understanding how modern screen habits are influencing long-term eye health.
+                </p>
+
+            </div>
+
+            <!-- MAIN ROW -->
+
+            <div class="main-grid">
+
+                <div id="chart1"></div>
+
+                <div class="insight-text">
+
+                    <p>
                     Through data visualization, we observe that modern screen habits
-                    <span style="color:#1e3c72; font-weight:600;">clearly influence eye health scores</span>. Higher screen time is strongly
-                    associated with <span style="color:#8e6bbf; font-weight:600;">lower</span> eye health outcomes. This suggests that digital
-                    lifestyle patterns are <span style="color:#8e6bbf; font-weight:600;">reshaping</span> how we use our eyes in daily life.
-                    Poor habits such as excessive screen exposure may increase <span style="color:#8e6bbf; font-weight:600;">long term</span>
+                    <span class="highlight-blue">clearly influence eye health scores</span>. Higher screen time is strongly
+                    associated with <span class="highlight-blue">lower</span> eye health outcomes. This suggests that digital
+                    lifestyle patterns are <span class="highlight-blue">reshaping</span> how we use our eyes in daily life.
+                    Poor habits such as excessive screen exposure may increase <span class="highlight-blue">long term</span>
                     eye strain and potential vision risks.
                     <br> <br>
                     Although modern habits increasingly focus on screen-based entertainment,
-                    many studies still encourage more time <span style="color:#8e6bbf; font-weight:600;">outdoors and physical exercise</span>.
+                    many studies still encourage more time <span class="highlight-blue">outdoors and physical exercise</span>.
                     The data supports this, showing that higher outdoor exposure is associated
-                    with better eye health scores.     ⬇️
-                </p>
+                    with better eye health scores.
+                    </p>
+
+                </div>
+
             </div>
 
-            <!-- BOTTOM LEFT -->
-            <div id="chart2"></div>
+            <!-- BOTTOM ROW -->
 
-            <!-- BOTTOM RIGHT (future text/chart) -->
-            <div id="chart3"></div>
+            <div class="bottom-grid">
 
+                <div id="chart2"></div>
 
-        </div>
+                <div id="chart3"></div>
 
-        <!-- SECTION 2 -->
-        <div class="section-title">
+            </div>
 
-            <span class="section-number">02</span>
+        </section>
 
-            <h2>A world losing sight</h2>
+        <!-- ================= SECTION 2 ================= -->
 
-            <p>
-                Tracking the global spread of vision impairment and the rising burden of sight loss over time.
-            </p>
+        <section class="section-container">
 
-        </div>
+            <div class="section-title">
 
-        <!-- CHART GRID -->
-        <div class="chart-grid">
+                <span class="section-number">02</span>
 
-            <!-- TOP LEFT -->
-            <div id="chart4"></div>
+                <h2>A World Losing Sight</h2>
 
-            <!-- TOP RIGHT -->
-            <div>
                 <p>
-                    
+                    Tracking the global spread of vision impairment and the rising burden of sight loss over time.
                 </p>
+
             </div>
 
-            <!-- BOTTOM LEFT -->
-            <div></div>
+            <!-- FULL WIDTH MAP -->
 
-            <!-- BOTTOM RIGHT (future text/chart) -->
-            <div></div>
+            <div class="full-width-chart">
 
+                <div id="chart4"></div>
 
-        </div>
+            </div>
 
-    </div>
+            <!-- SECOND ROW -->
+
+            <div class="main-grid">
+
+                <div class="insight-text">
+
+                    <p>
+                        Global patterns reveal that vision impairment is no longer isolated
+                        to ageing populations alone...
+                    </p>
+
+                </div>
+
+                <div id="chart5"></div>
+
+            </div>
+
+        </section>
 
     </div>
 

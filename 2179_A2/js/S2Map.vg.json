@@ -1,12 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 660,
-  "height": 390,
+  "width": 1100,
+  "height": 670,
   "projection": {
-    "type": "equalEarth",
-    "scale": {"expr": "zoom * 130"},
-    "translate": {"expr": "[tx, ty]"}
-  },
+  "type": "equalEarth",
+  "scale": {"expr": "zoom * 240"},
+  "translate": {"expr": "[tx, ty]"}
+},
   "params": [
     {
       "name": "severity",
@@ -35,7 +35,7 @@
     },
     {
       "name": "tx",
-      "value": 331,
+      "value": 500,
       "on": [
         {
           "events": "mousedown, [mousedown, window:mouseup] > window:mousemove",
@@ -45,7 +45,7 @@
     },
     {
       "name": "ty",
-      "value": 195,
+      "value":380,
       "on": [
         {
           "events": "mousedown, [mousedown, window:mouseup] > window:mousemove",

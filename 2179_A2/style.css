@@ -1,147 +1,137 @@
+/* ================= GLOBAL ================= */
+
 body {
     margin: 0;
+
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #eff2f6;
+
+    background: #f4f7fb;
+
+    color: #2f3a4d;
+
+    overflow-x: hidden;
 }
 
-/* ================= HEADER ================= */
-.header {
-    background: linear-gradient(135deg, #e5ebf7, #ccd7ec);
-    color: rgb(24, 40, 60);
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+html {
+    scroll-behavior: smooth;
 }
 
-.header h1 {
-    margin: 0;
-    font-size: 65px;
-    letter-spacing: 1px;
-    font-family: "Akaya Telivigala", system-ui;
+/* ================= HERO ================= */
+
+.hero {
+    height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(244,247,251,0.82),
+            rgba(244,247,251,0.92)
+        ),
+        url("images/eye-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
+
+    position: relative;
 }
 
-.header-p {
-    margin-top: 15px;
+.hero-content {
+    max-width: 950px;
 
-    text-align: center;
+    padding: 20px;
+}
 
-    font-size: 22px;
-    line-height: 1.5;
+.hero-tag {
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #7b8ba8;
+
+    font-size: 14px;
+
+    margin-bottom: 16px;
+}
+
+.hero h1 {
+    font-size: 82px;
+
+    line-height: 1.1;
 
     color: #1e3c72;
+
+    margin-bottom: 22px;
+
+    font-family: "Akaya Telivigala", system-ui;
 }
 
-/* ================= PAGE CONTAINER ================= */
-.page-container {
-    max-width: 1350px;
+.hero-subtitle {
+    font-size: 24px;
+
+    line-height: 1.8;
+
+    color: #42526b;
+
+    max-width: 850px;
+
     margin: auto;
 }
 
-/* ================= SECTION ================= */
-.section-title {
-    margin-top: 20px;
-    margin-bottom: 10px;
+.scroll-indicator {
+    margin-top: 65px;
+
+    font-size: 18px;
+
+    color: #6f7d95;
+
+    animation: float 2s infinite;
 }
 
-.section-number {
-    font-size: 70px;
-    font-weight: bold;
-    color: rgba(30,60,114,0.15);
-    display: block;
+@keyframes float {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(6px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
-.section-title h2 {
-    margin-top: -30px;
-    font-size: 35px;
-    color: #1e3c72;
-    text-align: center;
+/* ================= PAGE CONTAINER ================= */
+
+.page-container {
+    max-width: 1380px;
+
+    margin: auto;
+
+    padding: 40px;
 }
 
-.section-title p {
-    margin-top: -20px;
-    font-family: "Kalam", cursive;
-    font-weight: 380;
-    font-size: 25px;
-    line-height: 1.5;
-    color: #171616;
-    max-width: 80ch;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* ================= VERA CONTROLS ================= */
-.vega-bindings {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.vega-bind label {
-    font-size: 16px;
-    font-weight: 600;
-    color: #1e3c72;
-    margin-right: 10px;
-}
-
-.vega-bind select {
-    font-size: 16px;
-    padding: 8px 14px;
-    border-radius: 10px;
-    border: 1px solid #b7c4d9;
-    background-color: white;
-    margin-right: 25px;
-}
-
-.vega-bind input[type="checkbox"] {
-    transform: scale(1.4);
-    margin-left: 10px;
-    margin-right: 8px;
-}
-
-
-/* ================= CHART + TEXT LAYOUT ================= */
-.chart-grid {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-
-    gap: 18px;
-
-    align-items: start;
-}
-
-/* chart */
-
-
-/* right text */
-.insight-text {
-    font-size: 22px;
-    line-height: 1.6;
-    color: #333;
-    margin-top: -26px;
-}
-
-.insight-text p {
-    max-width: 43ch;
-    text-align: justify;
-}
-
-/* ================= intro ================= */
+/* ================= INTRO GRID ================= */
 
 .intro-grid {
     display: grid;
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 22px;
+    gap: 24px;
 
-    margin-top: 40px;
-    margin-bottom: 25px;
+    margin-top: -90px;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 .intro-card {
@@ -149,30 +139,31 @@ body {
 
     align-items: center;
 
-    gap: 18px;
+    gap: 22px;
 
     background: white;
 
-    border-radius: 18px;
+    border-radius: 24px;
 
-    padding: 18px;
+    padding: 22px;
 
-    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    box-shadow: 0 8px 26px rgba(0,0,0,0.06);
 
     transition: 0.3s ease;
 }
 
 .intro-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
 }
 
 .intro-card img {
-    width: 140px;
-    height: 120px;
+    width: 190px;
+
+    height: 145px;
 
     object-fit: cover;
 
-    border-radius: 14px;
+    border-radius: 18px;
 
     flex-shrink: 0;
 }
@@ -182,17 +173,273 @@ body {
 
     font-family: "Kalam", cursive;
 
-    font-size: 22px;
+    font-size: 26px;
 
     color: #5b4b6b;
 }
 
 .intro-content p {
-    margin-top: 6px;
+    margin-top: 8px;
+
+    line-height: 1.7;
+
+    color: #5d6675;
+
+    font-size: 18px;
+}
+
+/* ================= SECTION CONTAINER ================= */
+
+.section-container {
+    background: white;
+
+    border-radius: 28px;
+
+    padding: 48px;
+
+    margin-top: 75px;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+
+    overflow: hidden;
+}
+
+/* ================= SECTION TITLE ================= */
+
+.section-title {
+    margin-bottom: 20px;
+}
+
+.section-number {
+    font-size: 76px;
+
+    font-weight: bold;
+
+    color: rgba(30,60,114,0.12);
+
+    display: block;
+}
+
+.section-title h2 {
+    margin-top: -28px;
+
+    font-size: 40px;
+
+    color: #1e3c72;
+
+    text-align: left;
+}
+
+.section-title p {
+    margin-top: -10px;
+
+    font-family: "Kalam", cursive;
+
+    font-size: 24px;
 
     line-height: 1.6;
 
-    color: #555;
+    color: #4e5d75;
 
-    font-size: 18px;
+    text-align: left;
+
+    max-width: 75ch;
+}
+
+/* ================= MAIN GRID ================= */
+
+.main-grid {
+    display: grid;
+
+    grid-template-columns: 1.7fr 1.25fr;
+
+    gap: 36px;
+
+    align-items: center;
+
+    margin-top: 35px;
+}
+
+.full-width-chart {
+    width: 100%;
+
+    margin-top: 10px;
+    margin-bottom: 25px;
+    margin-left: 75px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ================= BOTTOM GRID ================= */
+
+.bottom-grid {
+    display: grid;
+
+    grid-template-columns: 1.7fr 1.3fr;
+
+    gap: 30px;
+
+    margin-top: 40px;
+}
+
+/* ================= INSIGHT TEXT ================= */
+
+.insight-text {
+    font-size: 21px;
+
+    line-height: 1.9;
+
+    color: #333;
+}
+
+.insight-text p {
+    margin: 0;
+
+    text-align: justify;
+}
+
+/* ================= HIGHLIGHT ================= */
+
+.highlight-blue {
+    color: #3570a3;
+
+    font-weight: 600;
+}
+
+.highlight-purple {
+    color: #8e6bbf;
+
+    font-weight: 600;
+}
+
+/* ================= CHART CONTROL ================= */
+
+#chart1,
+#chart2,
+#chart3,
+#chart4,
+#chart5,
+#chart6 {
+    width: 100%;
+
+    overflow: hidden;
+}
+
+.vega-embed {
+    width: 100%;
+}
+
+/* ================= VEGA DROPDOWN ================= */
+
+.vega-bindings {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+.vega-bind label {
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #1e3c72;
+
+    margin-right: 10px;
+}
+
+.vega-bind select {
+    font-size: 15px;
+
+    padding: 9px 14px;
+
+    border-radius: 10px;
+
+    border: 1px solid #c3cfdf;
+
+    background: white;
+
+    color: #42526b;
+}
+
+.vega-bind input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+/* ================= SOFT DECORATION ================= */
+
+.section-container::before {
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    background: rgba(150,180,255,0.08);
+
+    border-radius: 50%;
+
+    top: -60px;
+    right: -60px;
+
+    z-index: 0;
+}
+
+.section-container {
+    position: relative;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media screen and (max-width: 1100px) {
+
+    .main-grid,
+    .bottom-grid,
+    .intro-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+    }
+
+    .hero-subtitle {
+        font-size: 20px;
+    }
+
+    .section-title h2 {
+        font-size: 34px;
+    }
+
+    .section-title p {
+        font-size: 20px;
+    }
+
+    .intro-card {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .intro-card img {
+        width: 100%;
+
+        height: 220px;
+    }
 }
