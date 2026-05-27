@@ -314,7 +314,7 @@ html {
 
 .insight-text2 {
     grid-column: 1 / -1;  
-    max-width: 68ch;
+    max-width: 78ch;
     margin: 0 auto;
     text-align: center;
     font-size: 21px;
