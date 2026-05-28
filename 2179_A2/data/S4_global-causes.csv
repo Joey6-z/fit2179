@@ -1,0 +1,13 @@
+Cause,Severity,Data
+Cataract,Moderate-severe,83475182
+Diabetic retinopathy,Moderate-severe,3278034
+Glaucoma,Moderate-severe,4144773
+Macular degeneration,Moderate-severe,6231897
+Other vision loss,Moderate-severe,40471250
+Uncorrected refractive error,Moderate-severe,157490772
+Cataract,Blindness,17005480
+Diabetic retinopathy,Blindness,1074031
+Glaucoma,Blindness,3608411
+Macular degeneration,Blindness,1850109
+Other vision loss,Blindness,16044694
+Uncorrected refractive error,Blindness,3697269
