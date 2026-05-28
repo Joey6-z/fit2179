@@ -1,0 +1,144 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 530,
+  "height": 550,
+  "padding": {"left": 5, "right": 5, "top": 20, "bottom": 0},
+  "autosize": "none",
+  "signals": [
+    {"name": "cx", "update": "width / 2"},
+    {"name": "cy", "update": "height / 2"},
+    {"name": "gravityX", "value": 0.2, "bind": {"input": "range", "min": 0, "max": 1}},
+    {"name": "gravityY", "value": 0.1, "bind": {"input": "range", "min": 0, "max": 1}},
+    {
+      "name": "severity_select",
+      "value": "Blindness",
+      "bind": {
+        "input": "select",
+        "name": "Severity: ",
+        "options": ["Moderate-severe", "Blindness"]
+      }
+    }
+  ],
+  "data": [
+    {
+      "name": "table",
+      "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/S4_global-causes.csv",
+      "format": {"type": "csv", "parse": {"Data": "number"}},
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.Severity === severity_select"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "size",
+      "domain": {"data": "table", "field": "Data"},
+      "range": [0, 80000]
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": [
+        "Cataract",
+        "Diabetic retinopathy",
+        "Glaucoma",
+        "Macular degeneration",
+        "Other vision loss",
+        "Uncorrected refractive error"
+      ],
+      "range": ["#d9d9d9",
+                            "#fad2e1",
+                            "#d4c1ec",
+                            "#a9def9",
+                            "#6c91bf",
+                        "#c8e6c9"]
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "title": "Cause",
+      "orient": "right",
+      "symbolType": "circle",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    }
+  ],
+  "marks": [
+    {
+      "name": "nodes",
+      "type": "symbol",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "fill": {"scale": "color", "field": "Cause"},
+          "xfocus": {"signal": "cx"},
+          "yfocus": {"signal": "cy"}
+        },
+        "update": {
+          "size": {"signal": "datum.Data", "scale": "size"},
+          "stroke": {"value": "white"},
+          "strokeWidth": {"value": 1},
+          "tooltip": {
+            "signal": "{'Cause': datum.Cause, 'Severity': datum.Severity, 'Cases': format(datum.Data, ',')}"
+          }
+        }
+      },
+      "transform": [
+        {
+          "type": "force",
+          "iterations": 100,
+          "static": false,
+          "forces": [
+            {
+              "force": "collide",
+              "iterations": 2,
+              "radius": {"expr": "sqrt(datum.size) / 2"}
+            },
+            {"force": "center", "x": {"signal": "cx"}, "y": {"signal": "cy"}},
+            {"force": "x", "x": "xfocus", "strength": {"signal": "gravityX"}},
+            {"force": "y", "y": "yfocus", "strength": {"signal": "gravityY"}}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "from": {"data": "nodes"},
+      "encode": {
+        "enter": {
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "fontWeight": {"value": "bold"},
+          "fill": {"value": "black"}
+        },
+        "update": {
+          "x": {"field": "x"},
+          "y": {"field": "y", "offset": -8},
+          "fontSize": {"value": 12},
+          "text": {"field": "datum.Cause"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "nodes"},
+      "encode": {
+        "enter": {
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "fill": {"value": "black"}
+        },
+        "update": {
+          "x": {"field": "x"},
+          "y": {"field": "y", "offset": 10},
+          "fontSize": {"value": 11},
+          "text": {"signal": "format(datum.datum.Data, ',')"}
+        }
+      }
+    }
+  ]
+}
