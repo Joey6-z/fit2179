@@ -1,0 +1,101 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v6.json",
+  "description": "Donut chart for blindness causes.",
+  "width": 600,
+  "height": 500,
+  "autosize": "none",
+
+  "data": [
+    {
+      "name": "table",
+      "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/S4_causes-AUS.csv",
+      "format": {"type": "csv"},
+      "transform": [
+        {
+          "type": "pie",
+          "field": "Blindness"
+        }
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "table", "field": "Cause"},
+      "range": [
+        "#d9d9d9",
+        "#fad2e1",
+        "#d4c1ec",
+        "#a9def9"
+      ]
+    }
+  ],
+
+  "legends": [
+  {
+    "fill": "color",
+    "title": "Cause",
+    "orient": "none",
+    "legendX": 490,
+    "legendY": 20,
+    "labelFontSize": 12,
+    "titleFontSize": 12,
+    "encode": {
+  "labels": {
+    "update": {
+      "limit": {"value": 220}
+    }
+  }
+}
+  }
+],
+
+  "marks": [
+    {
+      "type": "arc",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "x": {"signal": "width / 2"},
+          "y": {"signal": "height / 2"},
+          "fill": {"scale": "color", "field": "Cause"},
+          "tooltip": {
+            "signal": "{Cause: datum.Cause, Blindness: datum.Blindness}"
+          }
+        },
+        "update": {
+          "startAngle": {"field": "startAngle"},
+          "endAngle": {"field": "endAngle"},
+         "innerRadius": {"signal": "100"},
+"outerRadius": {"signal": "220"}
+        }
+      }
+    },
+
+    {
+      "type": "text",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "fill": {"value": "#333"},
+          "fontSize": {"value": 18},
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"}
+        },
+        "update": {
+          "x": {
+  "signal": "width/2 + 160 * cos((datum.startAngle + datum.endAngle)/2 - PI/2)"
+},
+"y": {
+  "signal": "height/2 + 160 * sin((datum.startAngle + datum.endAngle)/2 - PI/2)"
+},
+          "text": {
+  "signal": "datum.Blindness + '%'"
+}
+        }
+      }
+    }
+  ]
+}

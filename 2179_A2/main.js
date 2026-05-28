@@ -18,3 +18,6 @@ vegaEmbed("#chart6", vg6).catch(console.error);
 
 var vg7 = "js/S4Packed.vg.json";
 vegaEmbed("#chart7", vg7).catch(console.error);
+
+var vg8 = "js/S4Donut.vg.json";
+vegaEmbed("#chart8", vg8).catch(console.error);
