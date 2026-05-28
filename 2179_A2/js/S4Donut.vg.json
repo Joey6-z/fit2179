@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v6.json",
   "description": "Donut chart for blindness causes.",
-  "width": 600,
-  "height": 500,
+  "width": 660,
+  "height": 456,
   "autosize": "none",
 
   "data": [
@@ -38,7 +38,7 @@
     "fill": "color",
     "title": "Cause",
     "orient": "none",
-    "legendX": 490,
+    "legendX": 520,
     "legendY": 20,
     "labelFontSize": 12,
     "titleFontSize": 12,
@@ -69,7 +69,7 @@
           "startAngle": {"field": "startAngle"},
           "endAngle": {"field": "endAngle"},
          "innerRadius": {"signal": "100"},
-"outerRadius": {"signal": "220"}
+"outerRadius": {"signal": "228"}
         }
       }
     },
