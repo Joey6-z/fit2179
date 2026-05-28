@@ -1,0 +1,117 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 300,
+  "height": 420,
+  "data": {
+    "values": [
+      {"Year": 2020, "gender": "Total", "Value": 1106},
+      {"Year": 2050, "gender": "Total", "Value": 1761},
+      {"Year": 2020, "gender": "Female", "Value": 609},
+      {"Year": 2050, "gender": "Female", "Value": 980},
+      {"Year": 2020, "gender": "Male", "Value": 497},
+      {"Year": 2050, "gender": "Male", "Value": 781}
+    ]
+  },
+  "resolve": {
+    "scale": {"y": "independent"}
+  },
+  "layer": [
+    {
+      "mark": {"type": "line", "strokeWidth": 3.5},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {"domain": [2020, 2050], "nice": false, "padding": 0},
+          "axis": {
+            "values": [2020, 2050],
+            "labelAngle": 0,
+            "labelFontSize": 16,
+            "labelFontWeight": "bold",
+            "title": null,
+            "domain": false,
+            "ticks": false,
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "axis": {
+            "title": null,
+            "orient": "left",
+            "labelFontSize": 12,
+            "domain": true,
+            "ticks": false,
+            "gridColor": "#ececec"
+          }
+        },
+        "color": {
+          "field": "gender",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Total", "Female", "Male"],
+            "range": ["#5e81ac", "#d63e79", "#5ab4d4"]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 120},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {"domain": [2020, 2050], "nice": false, "padding": 0}
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "axis": null
+        },
+        "color": {
+          "field": "gender",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Total", "Female", "Male"],
+            "range": ["#5e81ac", "#d63e79", "#5ab4d4"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "gender", "type": "nominal", "title": "Group"},
+          {"field": "Year", "type": "quantitative"},
+          {"field": "Value", "type": "quantitative", "title": "Cases (M)", "format": ","}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.Year == 2050"}],
+      "mark": {"type": "line", "strokeWidth": 0},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {"domain": [2020, 2050], "nice": false, "padding": 0}
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "axis": {
+            "title": null,
+            "orient": "right",
+            "labelFontSize": 12,
+            "domain": true,
+            "ticks": false,
+            "grid": false
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "white",
+    "view": {"stroke": null}
+  }
+}

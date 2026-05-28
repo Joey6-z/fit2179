@@ -12,3 +12,6 @@ vegaEmbed("#chart4", vg4).catch(console.error);
 
 var vg5 = "js/S2Line.vg.json";
 vegaEmbed("#chart5", vg5).catch(console.error);
+
+var vg6 = "js/S3Slope.vg.json";
+vegaEmbed("#chart6", vg6).catch(console.error);
