@@ -73,9 +73,11 @@
             "values": [1990, 2000, 2010, 2020],
             "title": null,
             "labelAngle": 0,
+            "labelFontSize": 13,
             "domain": false,
             "ticks": false,
-            "grid": false
+            "grid": false,
+            "format": "d"
           }
         },
 

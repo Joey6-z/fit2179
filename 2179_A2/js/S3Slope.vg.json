@@ -1,48 +1,43 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 300,
+  "width": 540,
   "height": 420,
   "data": {
-    "values": [
-      {"Year": 2020, "gender": "Total", "Value": 1106},
-      {"Year": 2050, "gender": "Total", "Value": 1761},
-      {"Year": 2020, "gender": "Female", "Value": 609},
-      {"Year": 2050, "gender": "Female", "Value": 980},
-      {"Year": 2020, "gender": "Male", "Value": 497},
-      {"Year": 2050, "gender": "Male", "Value": 781}
-    ]
+    "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/S3_loss-projection-2050.csv"
   },
   "resolve": {
-    "scale": {"y": "independent"}
+    "scale": { "y": "independent" }
   },
   "layer": [
     {
-      "mark": {"type": "line", "strokeWidth": 3.5},
+      "mark": { "type": "line", "strokeWidth": 4 },
       "encoding": {
         "x": {
           "field": "Year",
           "type": "quantitative",
-          "scale": {"domain": [2020, 2050], "nice": false, "padding": 0},
+          "scale": { "domain": [2020, 2050], "nice": false, "padding": 0 },
           "axis": {
             "values": [2020, 2050],
             "labelAngle": 0,
-            "labelFontSize": 16,
-            "labelFontWeight": "bold",
+            "labelFontSize": 13,
             "title": null,
             "domain": false,
             "ticks": false,
-            "grid": false
+            "grid": false,
+            "format": "d"
           }
         },
         "y": {
           "field": "Value",
           "type": "quantitative",
           "axis": {
-            "title": null,
+            "title": "Vision Loss Cases (Millions)",
+            "titleFontSize": 16,
             "orient": "left",
-            "labelFontSize": 12,
+            "labelFontSize": 13,
             "domain": true,
             "ticks": false,
+            "grid": true,
             "gridColor": "#ececec"
           }
         },
@@ -53,17 +48,23 @@
             "domain": ["Total", "Female", "Male"],
             "range": ["#5e81ac", "#d63e79", "#5ab4d4"]
           },
-          "legend": null
+          "legend": {
+            "title": "Group",
+            "orient": "top-left",
+            "labelFontSize": 15,
+            "titleFontSize": 15,
+            "symbolStrokeWidth": 3
+          }
         }
       }
     },
     {
-      "mark": {"type": "point", "filled": true, "size": 120},
+      "mark": { "type": "point", "filled": true, "size": 90 },
       "encoding": {
         "x": {
           "field": "Year",
           "type": "quantitative",
-          "scale": {"domain": [2020, 2050], "nice": false, "padding": 0}
+          "scale": { "domain": [2020, 2050], "nice": false, "padding": 0 }
         },
         "y": {
           "field": "Value",
@@ -80,38 +81,83 @@
           "legend": null
         },
         "tooltip": [
-          {"field": "gender", "type": "nominal", "title": "Group"},
-          {"field": "Year", "type": "quantitative"},
-          {"field": "Value", "type": "quantitative", "title": "Cases (M)", "format": ","}
+          { "field": "gender", "type": "nominal", "title": "Group" },
+          { "field": "Year", "type": "quantitative" },
+          {
+            "field": "Value",
+            "type": "quantitative",
+            "title": "Cases (Million)",
+            "format": ","
+          }
         ]
       }
     },
     {
-      "transform": [{"filter": "datum.Year == 2050"}],
-      "mark": {"type": "line", "strokeWidth": 0},
+      "transform": [{ "filter": "datum.Year == 2050" }],
+      "mark": { "type": "line", "strokeWidth": 0 },
       "encoding": {
         "x": {
           "field": "Year",
           "type": "quantitative",
-          "scale": {"domain": [2020, 2050], "nice": false, "padding": 0}
+          "scale": { "domain": [2020, 2050], "nice": false, "padding": 0 }
         },
         "y": {
           "field": "Value",
           "type": "quantitative",
           "axis": {
-            "title": null,
+            "title": "Vision Loss Cases (Millions)",
+            "titleFontSize": 16,
             "orient": "right",
-            "labelFontSize": 12,
+            "labelFontSize": 13,
             "domain": true,
             "ticks": false,
             "grid": false
           }
         }
       }
-    }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 13,
+        "fontStyle": "italic",
+        "color": "#5e81ac"
+      },
+      "encoding": {
+        "x": { "value": 450 },
+        "y": { "value": 80 },
+        "text": { "value": "▲ +59% increase by 2050" }
+      }
+    },
+    {
+  "mark": {
+    "type": "text",
+    "fontSize": 13,
+    "fontStyle": "italic",
+    "color": "#d63e79"
+  },
+  "encoding": {
+    "x": {"value": 220},
+    "y": {"value": 220},
+    "text": {"value": "▲ +60.9% increase by 2050"}
+  }
+},
+{
+  "mark": {
+    "type": "text",
+    "fontSize": 13,
+    "fontStyle": "italic",
+    "color": "#5ab4d4"
+  },
+  "encoding": {
+    "x": {"value": 250},
+    "y": {"value": 298},
+    "text": {"value": "▲ +57.1% increase by 2050"}
+  }
+}
   ],
   "config": {
     "background": "white",
-    "view": {"stroke": null}
+    "view": { "stroke": null }
   }
 }
