@@ -1,17 +1,19 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500,
+  "width": 550,
   "height": 420,
   "data": {
-    "values": [
-      {"Category": "Blindness", "Value": 650000000},
-      {"Category": "Moderate-severe", "Value": 4947000000}
-    ]
+    "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/S5_productivity-loss-due-to-poor-vision-per-year.csv",
+    "format": {"type": "csv", "parse": {"Value": "number"}}
   },
   "transform": [
     {
       "calculate": "datum.Value / 1000000000",
       "as": "ValueB"
+    },
+    {
+      "calculate": "datum.Category == 'Global (GNI)' ? 'Global (Gross National Income)' : datum.Category == 'Global (Min Wage)' ? 'Global (Minimum Wage)' : datum.Category",
+      "as": "CategoryLabel"
     }
   ],
   "layer": [
@@ -23,16 +25,18 @@
       },
       "encoding": {
         "x": {
-          "field": "Category",
-          "type": "nominal",
-          "axis": {
-            "title": null,
-            "labelFontSize": 14,
-            "labelFontWeight": "bold",
-            "domain": false,
-            "ticks": false
-          }
-        },
+  "field": "Category",
+  "type": "nominal",
+  "scale": {"paddingInner": 0.3},
+  "axis": {
+    "title": null,
+    "labelFontSize": 12,
+    "labelFontWeight": "bold",
+    "labelAngle": -30,
+    "domain": false,
+    "ticks": false
+  }
+},
         "y": {
           "field": "ValueB",
           "type": "quantitative",
@@ -41,71 +45,52 @@
             "titleFontSize": 14,
             "labelFontSize": 12,
             "gridColor": "#ececec",
-            "format": "$,.2f"
+            "format": "$,.0f"
           }
         },
         "color": {
-          "field": "Category",
+          "field": "Severity",
           "type": "nominal",
           "scale": {
             "domain": ["Blindness", "Moderate-severe"],
             "range": ["#a9def9", "#d4c1ec"]
           },
-          "legend": null
+          "legend": {
+            "title": "Severity",
+            "orient": "top",
+            "labelFontSize": 12,
+            "titleFontSize": 13
+          }
+        },
+        "xOffset": {
+          "field": "Severity",
+          "type": "nominal"
         },
         "tooltip": [
-          {"field": "Category", "type": "nominal", "title": "Severity"},
+          {"field": "CategoryLabel", "type": "nominal", "title": "Region"},
+          {"field": "Severity", "type": "nominal", "title": "Severity"},
           {"field": "ValueB", "type": "quantitative", "title": "Loss (USD Billion)", "format": "$,.2f"}
         ]
       }
     },
     {
-      "mark": {
-        "type": "text",
-        "dy": -10,
-        "fontSize": 13,
-        "fontWeight": "bold"
-      },
-      "encoding": {
-        "x": {"field": "Category", "type": "nominal"},
-        "y": {"field": "ValueB", "type": "quantitative"},
-       "text": {"field": "ValueB", "type": "quantitative", "format": "$,.2f"},
-        "color": {
-          "field": "Category",
-          "type": "nominal",
-          "scale": {
-            "domain": ["Blindness", "Moderate-severe"],
-            "range": ["#a9def9", "#d4c1ec"]
-          },
-          "legend": null
+      "transform": [
+        {
+          "aggregate": [{"op": "sum", "field": "ValueB", "as": "TotalB"}],
+          "groupby": ["Category"]
         }
-      }
-    },
-    {
-      "mark": {
-        "type": "rule",
-        "strokeDash": [4, 4],
-        "color": "#999",
-        "strokeWidth": 1.5
-      },
-      "encoding": {
-        "y": {"datum": 5.597}
-      }
-    },
-    {
+      ],
       "mark": {
         "type": "text",
-        "align": "right",
-        "dx": -10,
         "dy": -8,
-        "fontSize": 12,
+        "fontSize": 11,
         "fontStyle": "italic",
         "color": "#666"
       },
       "encoding": {
-        "x": {"value": 400},
-        "y": {"datum": 5.597},
-        "text": {"value": "Total: $5.60B / year"}
+        "x": {"field": "Category", "type": "nominal"},
+        "y": {"field": "TotalB", "type": "quantitative"},
+        "text": {"field": "TotalB", "type": "quantitative", "format": "$,.2f"}
       }
     }
   ],
