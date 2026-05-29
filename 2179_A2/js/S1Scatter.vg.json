@@ -104,7 +104,7 @@
           "mark": {
             "type": "line",
             "strokeWidth": 3,
-            "color": "#a13048"
+            "color": "#873535"
           },
           "encoding": {
             "x": {

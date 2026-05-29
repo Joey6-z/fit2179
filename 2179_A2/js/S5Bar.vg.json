@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 550,
+  "width": 500,
   "height": 420,
   "data": {
     "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/S5_productivity-loss-due-to-poor-vision-per-year.csv",
@@ -92,7 +92,22 @@
         "y": {"field": "TotalB", "type": "quantitative"},
         "text": {"field": "TotalB", "type": "quantitative", "format": "$,.2f"}
       }
-    }
+    },
+    {
+  "mark": {
+    "type": "text",
+    "align": "left",
+    "fontSize": 13,
+    "fontStyle": "italic",
+    "color": "#873535",
+    "lineBreak": "\n"
+  },
+  "encoding": {
+    "x": {"value": 315},
+    "y": {"value": 15},
+    "text": {"value": "Min Wage & GNI represent the lower and upper\nbounds of estimated productivity loss,\nreflecting different assumptions about\nthe economic value of lost work."}
+  }
+}
   ],
   "config": {
     "background": "white",
