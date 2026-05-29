@@ -461,3 +461,74 @@ html {
         height: 220px;
     }
 }
+
+/* ================= REFERENCES ================= */
+
+.references-section {
+    background: #f9f9f9;
+    border-top: 2px solid #e0e0e0;
+}
+
+.references-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 1px;
+}
+
+.ref-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-left: 4px solid #6c91bf;
+}
+
+.ref-number {
+    font-size: 13px;
+    font-weight: bold;
+    color: #6c91bf;
+    white-space: nowrap;
+    min-width: 40px;
+}
+
+.ref-content h4 {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 0 4px 0;
+    color: #333;
+}
+
+.ref-desc {
+    font-size: 12px;
+    color: #999;
+    margin: 0 0 12px 0;
+    font-style: italic;
+}
+
+.ref-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ref-link {
+    font-size: 12px;
+    color: #6c91bf;
+    text-decoration: none;
+    padding: 4px 8px;
+    background: #f0f4f9;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.ref-link:hover {
+    background: #d4e0f0;
+}
+
+.ref-footer p {
+    font-size: 18px;
+    color: #555;
+}
