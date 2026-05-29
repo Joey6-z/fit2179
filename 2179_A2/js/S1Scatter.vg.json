@@ -1,107 +1,86 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
   "description": "Interactive scatter plot with dropdown, brush zoom and regression line toggle",
-
   "data": {
     "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/eye_score.csv"
   },
-
   "params": [
     {
       "name": "HabitSelector",
       "value": "screen_time_hours",
-
       "bind": {
         "input": "select",
-
         "options": [
           "screen_time_hours",
           "screen_brightness_avg",
           "screen_distance_cm",
           "night_mode_usage"
         ],
-
         "labels": [
           "Screen Time Hours",
           "Screen Brightness Average",
           "Screen Distance (cm)",
           "Night Mode Usage (%)"
         ],
-
         "name": "Screen Habit: "
       }
     },
-
     {
       "name": "ShowRegression",
-
       "value": true,
-
       "bind": {
         "input": "checkbox",
         "name": " Show Regression Line "
       }
     }
   ],
-
   "transform": [
     {
       "calculate": "datum[HabitSelector]",
       "as": "SelectedHabit"
     }
   ],
-
   "vconcat": [
-
     {
       "width": 550,
       "height": 320,
-
       "layer": [
-
         {
+          "transform": [
+            {
+              "filter": {
+                "param": "brush"
+              }
+            }
+          ],
           "mark": {
             "type": "point",
             "filled": true,
             "size": 80,
             "opacity": 0.7
           },
-
           "encoding": {
-
             "x": {
               "field": "SelectedHabit",
               "type": "quantitative",
               "title": "Selected Screen Habit"
             },
-
             "y": {
               "field": "eye_health_score",
               "type": "quantitative",
-
-              "title": "Eye Health Score",
-
-              "scale": {
-                "domain": {
-                  "param": "brush"
-                }
-              }
+              "title": "Eye Health Score"
             },
-
             "color": {
               "field": "eye_health_score",
               "type": "quantitative",
               "title": "Eye Health Score"
             },
-
             "tooltip": [
               {
                 "field": "SelectedHabit",
                 "type": "quantitative",
                 "title": "Habit Value"
               },
-
               {
                 "field": "eye_health_score",
                 "type": "quantitative",
@@ -110,76 +89,67 @@
             ]
           }
         },
-
         {
           "transform": [
+            {
+              "filter": {
+                "param": "brush"
+              }
+            },
             {
               "regression": "eye_health_score",
               "on": "SelectedHabit"
             }
           ],
-
           "mark": {
             "type": "line",
             "strokeWidth": 3,
             "color": "#a13048"
           },
-
           "encoding": {
-
             "x": {
               "field": "SelectedHabit",
               "type": "quantitative"
             },
-
             "y": {
               "field": "eye_health_score",
               "type": "quantitative"
             },
-
             "opacity": {
               "condition": {
                 "param": "ShowRegression",
                 "value": 1
               },
-
               "value": 0
             }
           }
         }
       ]
     },
-
     {
       "width": 550,
       "height": 80,
-
       "mark": {
         "type": "point",
         "filled": true,
         "size": 30,
         "opacity": 0.4
       },
-
       "params": [
         {
           "name": "brush",
-
           "select": {
             "type": "interval",
             "encodings": ["y"]
           }
         }
       ],
-
       "encoding": {
-
         "x": {
           "field": "SelectedHabit",
           "type": "quantitative",
           "title": null
         },
-
         "y": {
           "field": "eye_health_score",
           "type": "quantitative",
@@ -188,13 +158,10 @@
       }
     }
   ],
-
   "config": {
-
     "view": {
       "stroke": null
     },
-
     "axis": {
       "labelFontSize": 12,
       "titleFontSize": 14
