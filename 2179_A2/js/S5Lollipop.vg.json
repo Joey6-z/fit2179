@@ -1,0 +1,94 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 550,
+  "height": 350,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Joey6-z/fit2179/refs/heads/main/2179_A2/data/S5_eyecare-intervention-returns-compared-to-other-interventions.csv",
+    "format": {"type": "csv", "parse": {"Typical benefits per $1 spent": "number"}}
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "strokeWidth": 6},
+      "encoding": {
+        "x": {
+          "field": "Area",
+          "type": "nominal",
+          "sort": "-y",
+          "axis": {
+            "title": null,
+            "labelFontSize": 13,
+            "labelFontWeight": "bold",
+            "labelAngle": -15,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "y": {
+          "field": "Typical benefits per $1 spent",
+          "type": "quantitative",
+          "scale": {"domain": [0, 32]},
+          "axis": {
+            "title": "Typical Benefits per $1 Spent",
+            "titleFontSize": 14,
+            "labelFontSize": 13,
+            "gridColor": "#ececec",
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "y2": {"value": 350},
+        "color": {
+          "field": "Area",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Eye health", "Nutrition", "Non-communicable diseases", "All development"],
+            "range": ["#6c91bf", "#a9def9", "#d4c1ec", "#fad2e1"]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 28, "fontWeight": "bold", "dy": -14},
+      "encoding": {
+        "x": {"field": "Area", "type": "nominal", "sort": "-y"},
+        "y": {"field": "Typical benefits per $1 spent", "type": "quantitative"},
+        "text": {"value": "$"},
+        "color": {
+          "field": "Area",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Eye health", "Nutrition", "Non-communicable diseases", "All development"],
+            "range": ["#6c91bf", "#a9def9", "#d4c1ec", "#fad2e1"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "Area", "type": "nominal", "title": "Investment Area"},
+          {"field": "Typical benefits per $1 spent", "type": "quantitative", "title": "Return per $1 spent"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "dy": -35, "fontSize": 13, "fontWeight": "bold"},
+      "encoding": {
+        "x": {"field": "Area", "type": "nominal", "sort": "-y"},
+        "y": {"field": "Typical benefits per $1 spent", "type": "quantitative"},
+        "text": {"field": "Typical benefits per $1 spent", "type": "quantitative", "format": "$d"},
+        "color": {
+          "field": "Area",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Eye health", "Nutrition", "Non-communicable diseases", "All development"],
+            "range": ["#6c91bf", "#a9def9", "#d4c1ec", "#fad2e1"]
+          },
+          "legend": null
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "white",
+    "view": {"stroke": null}
+  }
+}
