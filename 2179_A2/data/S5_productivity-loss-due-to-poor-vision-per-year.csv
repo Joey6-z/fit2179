@@ -1,4 +1,7 @@
-"Country","Australia"
-Blindness,650000000
-Moderate-severe,4947000000
-Total,5597000000
+Category,Severity,Value
+Australia,Blindness,650000000
+Australia,Moderate-severe,4947000000
+Global (Min Wage),Blindness,41600000000
+Global (Min Wage),Moderate-severe,118400000000
+Global (GNI),Blindness,116800000000
+Global (GNI),Moderate-severe,332500000000
