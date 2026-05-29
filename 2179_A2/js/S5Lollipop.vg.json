@@ -70,7 +70,7 @@
       }
     },
     {
-      "mark": {"type": "text", "dy": -35, "fontSize": 13, "fontWeight": "bold"},
+      "mark": {"type": "text", "dy": -35, "fontSize": 18, "fontWeight": "bold"},
       "encoding": {
         "x": {"field": "Area", "type": "nominal", "sort": "-y"},
         "y": {"field": "Typical benefits per $1 spent", "type": "quantitative"},
@@ -88,7 +88,7 @@
     }
   ],
   "config": {
-    "background": "white",
+    "background": "transparent",
     "view": {"stroke": null}
   }
 }

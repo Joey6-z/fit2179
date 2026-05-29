@@ -159,6 +159,7 @@
     }
   ],
   "config": {
+    "background": "transparent",
     "view": {
       "stroke": null
     },

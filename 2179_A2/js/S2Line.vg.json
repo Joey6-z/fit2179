@@ -188,7 +188,7 @@
   ],
 
   "config": {
-    "background": "white",
+    "background": "transparent",
     "view": {
       "stroke": null
     }
