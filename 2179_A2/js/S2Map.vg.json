@@ -263,7 +263,22 @@
           "value": ["South Africa has the highest prevalence", "of uncorrected presbyopia vision impairment."
   ]}
       }
-    }
+    },
+    {
+  "data": {"values": [{}]},
+  "mark": {
+    "type": "text",
+    "fontSize": 15,
+    "color": "#888",
+    "fontStyle": "italic",
+    "align": "left"
+  },
+  "encoding": {
+    "x": {"value": 10},
+    "y": {"value": 650},
+    "text": {"value": "Note: Grey areas indicate no data available, not low prevalence"}
+  }
+}
   ],
   "config": {
     "background": "transparent",
